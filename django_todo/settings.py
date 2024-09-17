@@ -11,8 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
 import dj_database_url
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 DEVELOPMENT = os.environ.get('DEVELOPMENT', 'False') == 'True'
@@ -25,7 +29,7 @@ if os.path.isfile('env.py'):
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Use the environment variable for the secret key
-SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')  # Provide a default key for development
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback_secret_key')  # Provide a default key for development
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = DEVELOPMENT
